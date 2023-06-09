@@ -1,0 +1,14 @@
+{
+  "hash": "d9358a90fcdb7c1117e069dd9d87566a",
+  "result": {
+    "markdown": "# Introduction\n\nLe paradigme de la programmation est guidé, depuis la naissance de l'Internet, par l'exploitation de la technologie de mise en réseau et la nécessité de pouvoir créer plus rapidement des capacités plus puissantes.\nLes utilisateurs peuvent envoyer des emails, des messages instantanés à des membres de sa famille ou partager des fichiers sur le Web.\n\nSee @knuth84 for additional discussion of literate programming.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Conception orientée service - Service Oriented Analysis and Design</title>
+  <meta name="description" content="Cours sur la méthodologie de conception orientée service." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Conception orientée service - Service Oriented Analysis and Design" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Cours sur la méthodologie de conception orientée service." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Conception orientée service - Service Oriented Analysis and Design" />
+  
+  <meta name="twitter:description" content="Cours sur la méthodologie de conception orientée service." />
+  
+
+<meta name="author" content="Constantin Drabo" />
+
+
+<meta name="date" content="2022-06-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="modèle-de-cycle-de-vie.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Conception orientée service</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Les concepts</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#définition"><i class="fa fa-check"></i><b>1.1</b> Définition</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#quest-ce-que-la-soa"><i class="fa fa-check"></i><b>1.2</b> Qu’est-ce-que la SOA</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#comment-fonctionne-larchitecture-orientée-service"><i class="fa fa-check"></i><b>1.2.1</b> Comment fonctionne l’architecture orientée service</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#soa-vs-approche-monolithique"><i class="fa fa-check"></i><b>1.2.2</b> SOA vs approche monolithique</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#les-extensions-de-larchitecture-soa---architecture-évenementielle-event-driven-architecture"><i class="fa fa-check"></i><b>1.2.3</b> Les extensions de l’architecture SOA - Architecture évenementielle (Event-Driven Architecture)</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#les-extensions-de-larchitecture-soa---les-api-application-programming-interface"><i class="fa fa-check"></i><b>1.2.4</b> Les extensions de l’architecture SOA - Les API (Application Programming Interface)</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#les-extensions-de-larchitecture-soa---les-microservices"><i class="fa fa-check"></i><b>1.2.5</b> Les extensions de l’architecture SOA - Les microservices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html"><i class="fa fa-check"></i><b>2</b> Modèle de cycle de vie</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html#principe-du-modèle-de-cycle-de-vie-orienté-service"><i class="fa fa-check"></i><b>2.1</b> Principe du modèle de cycle de vie orienté service</a>
+<ul>
+<li class="chapter" data-level="" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html#la-métamorphose"><i class="fa fa-check"></i>La métamorphose</a></li>
+<li class="chapter" data-level="" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html#la-stratégie"><i class="fa fa-check"></i>La stratégie</a></li>
+<li class="chapter" data-level="" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html#la-gouvernance"><i class="fa fa-check"></i>La gouvernance</a></li>
+<li class="chapter" data-level="" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html#la-structure"><i class="fa fa-check"></i>La structure</a></li>
+<li class="chapter" data-level="" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html#le-financement"><i class="fa fa-check"></i>Le financement</a></li>
+<li class="chapter" data-level="" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html#retour-sur-investissement"><i class="fa fa-check"></i>Retour sur investissement</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html#structure-du-modèle-de-cycle-de-vie-orienté-service"><i class="fa fa-check"></i><b>2.2</b> Structure du modèle de cycle de vie orienté service</a>
+<ul>
+<li class="chapter" data-level="" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html#chronologie-du-cycle-de-vie-de-service"><i class="fa fa-check"></i>Chronologie du cycle de vie de service</a></li>
+<li class="chapter" data-level="" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html#evènements-du-cycle-de-vie-de-service"><i class="fa fa-check"></i>Evènements du cycle de vie de service</a></li>
+<li class="chapter" data-level="" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html#les-saisons-du-cycle-de-vie-de-service"><i class="fa fa-check"></i>Les saisons du cycle de vie de service</a></li>
+<li class="chapter" data-level="" data-path="modèle-de-cycle-de-vie.html"><a href="modèle-de-cycle-de-vie.html#les-disciplines-du-cycle-de-vie-de-service"><i class="fa fa-check"></i>Les disciplines du cycle de vie de service</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="principes-de-développement-des-applications-orientées-service.html"><a href="principes-de-développement-des-applications-orientées-service.html"><i class="fa fa-check"></i><b>3</b> Principes de développement des applications orientées service</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="principes-de-développement-des-applications-orientées-service.html"><a href="principes-de-développement-des-applications-orientées-service.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>3.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="3.2" data-path="principes-de-développement-des-applications-orientées-service.html"><a href="principes-de-développement-des-applications-orientées-service.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>3.2</b> Captioned figures and tables</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="modèles.html"><a href="modèles.html"><i class="fa fa-check"></i><b>4</b> Modèles</a></li>
+<li class="chapter" data-level="5" data-path="protocoles-et-normes.html"><a href="protocoles-et-normes.html"><i class="fa fa-check"></i><b>5</b> Protocoles et normes</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="protocoles-et-normes.html"><a href="protocoles-et-normes.html#footnotes"><i class="fa fa-check"></i><b>5.1</b> Footnotes</a></li>
+<li class="chapter" data-level="5.2" data-path="protocoles-et-normes.html"><a href="protocoles-et-normes.html#citations"><i class="fa fa-check"></i><b>5.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="approche-et-mise-en-oeuvre.html"><a href="approche-et-mise-en-oeuvre.html"><i class="fa fa-check"></i><b>6</b> Approche et mise en oeuvre</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="approche-et-mise-en-oeuvre.html"><a href="approche-et-mise-en-oeuvre.html#equations"><i class="fa fa-check"></i><b>6.1</b> Equations</a></li>
+<li class="chapter" data-level="6.2" data-path="approche-et-mise-en-oeuvre.html"><a href="approche-et-mise-en-oeuvre.html#theorems-and-proofs"><i class="fa fa-check"></i><b>6.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="6.3" data-path="approche-et-mise-en-oeuvre.html"><a href="approche-et-mise-en-oeuvre.html#callout-blocks"><i class="fa fa-check"></i><b>6.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>7</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>7.1</b> Publishing</a></li>
+<li class="chapter" data-level="7.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>7.2</b> 404 pages</a></li>
+<li class="chapter" data-level="7.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>7.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Conception orientée service - Service Oriented Analysis and Design</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Conception orientée service - Service Oriented Analysis and Design</h1>
+<p class="author"><em>Constantin Drabo</em></p>
+<p class="date"><em>2022-06-25</em></p>
+</div>
+<div id="les-concepts" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Les concepts<a href="index.html#les-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Dans ce chapitre nous allons faire le tour des différents concepts qui entrent dans la compréhension de la conception orientée service. Il s’agira de définir la notion de <strong>SOAD</strong> (<em>Service Oriented Analysis and Design</em>), la définition du <strong>SOA</strong> (<em>Service Oriented Application</em>).</p>
+<div id="définition" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Définition<a href="index.html#définition" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>L’analyse et la conception orientée services (<strong>SOAD</strong> : <em>Service Oriented Analysis and Design</em>) est une méthodologie qui fait référence à la modélisation et à la conception d’application d’architecture orientée services (<strong>SOA</strong>: <em>Service Oriented Application</em>). Une approche SOAD dans la conception SOA nécessite les éléments clés suivants:</p>
+<ul>
+<li><strong>modèle de processus</strong></li>
+<li><strong>instructions</strong></li>
+<li><strong>normes</strong></li>
+<li><strong>artefacts</strong></li>
+<li><strong>qualité de service</strong></li>
+</ul>
+<p><strong>Modèle de processus</strong>: elle consiste en la définition du processus et de la notation en faisant un mélange de l’analyse orientée objet (<strong>OOAD</strong>), la modélisation des processus métier (<strong>BPM</strong>) et les éléments d’architecture d’entreprise.</p>
+<p><strong>Instruction</strong>: c’est la manière structurée de conceptualiser les services</p>
+<p><strong>Normes</strong> : fournir des facteurs de qualité bien définis et les meilleurs pratiques de service, de capacité, de données et de granularité des contraintes. Les rôles doivent être bien définis et indiquer si c’est un développeur, un architect ou un analyste qui est responsable de chaque fraction de travail.</p>
+<p><strong>Artefacts</strong>: elle consite à définir ce qui n’est pas un bon service, comme les services qui ne sont pas réutilisables, et qui ne sont donc pas considérés comme des résidents SOA.</p>
+<p><strong>Qualité de service</strong>: elle facilite la modélisation de bout en bout et fournit un support complet d’outils.</p>
+</div>
+<div id="quest-ce-que-la-soa" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Qu’est-ce-que la SOA<a href="index.html#quest-ce-que-la-soa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La <strong>SOA</strong> (_Service Oriented Architecture) est un modèle de conception qui rend des composants logiciels réutilisables, grâce à des interfaces de services qui utilisent un langage commun pour communiquer via un réseau.</p>
+<p>Un <strong>service</strong> est une unité autonome de fonctionnalité logicielle, ou d’un ensemble de fonctionnalités, conçue pour réaliser une tâche précise comme récupérer des informations ou exécuter une opération.</p>
+<p>Il contient les intégrations de code et de données nécessaires pour exécuter une fonction métier distincte et complète. Vous pouvez y accéder à distance, et interagir avec lui ou le mettre à jour de manière indépendante. En d’autre termes, l’architecture SOA permet à des composants logiciels déployés et gérés séparement de communiquer et de fonctionner ensemble sous la forme d’applications logicielles communes à différents systèmes.</p>
+<p>L’approche <strong>SOA</strong> intègre nativement les principes de <em>modularité</em>, d’<em>interfaçage</em>, de <em>contractualisation</em>, et d’<em>interopérabilité</em>. Elle assure ainsi une adaptation rapide du système d’informationn au regard des évolutions des besoins de l’entreprise. Elle permet également de capitaliser la mise en place de bonnes pratiques par l’élaboration d’une architecture de reference. Cette architecture de référence pourra également être utilisée pour répondre à des problématiques de convergence de systèmes.</p>
+<p><img src="SOA.png" width="70%" style="display: block; margin: auto;" />
+L’architecture SOA se base sur ressources de l’entreprise pour fournir un système informatique efficient.</p>
+<ul>
+<li><em>Pratique</em> : elle utilise les best-practices de l’entreprise pour construire une architecture efficace</li>
+<li><em>Plateforme</em> : augmenter l’efficacité opérationnelle</li>
+<li><em>Utilisateur</em> : elle donne aux utilisateurs le pouvoir de prendre de meilleures décisions</li>
+<li><em>Processus</em> : aligner l’IT au processus métiers de l’entreprise</li>
+</ul>
+<p>Selon le <strong>Gartner Group Research</strong>, une application qui obéit à la SOA doit respecter les cinq(5) principes suivants:</p>
+<ol style="list-style-type: decimal">
+<li><em>le système doit être modulaire</em>. Cela offre l’avantage évident de pouvoir diviser et régner (résoudre un problème complexe en assemblant un ensemble de petits composants simples qui fonctionnent ensemble)</li>
+<li><em>les modules doivent être distribuables</em>. Ils doivent être capables de fonctionner sur des ordinateurs différents et communiquent entre eux en envoyant des messages sur un réseau lors de leur exécution.</li>
+<li><em>les interfaces d’un module doivent être clairement définies et documentées</em>. Les développeurs de logiciels écrivent ou génèrent des métadonnées d’interface qui spécifient un contrat explicite afin qu’un autre développeur puisse trouver et utiliser le service (cela permet un couplage faible)</li>
+<li><em>un module qui implémente un service peut être remplacé par un autre module qui offre le même service et la même interface</em>, car l’interface conçue est distincte du module. Il s’agit d’un aspect du couplage faible qui permet une maintenance et des améliorations continues.</li>
+<li><em>les modules du fournisseur de services doivent être partageables</em>. Ils sont conçus et déployés de manière à pouvoir être invoqués successivement par des modules consommateurs de services disparates engagés dans des activités métiers diverses, bien que partiellement liées.</li>
+</ol>
+<div id="comment-fonctionne-larchitecture-orientée-service" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Comment fonctionne l’architecture orientée service<a href="index.html#comment-fonctionne-larchitecture-orientée-service" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pour implémenter l’architecture orientée service (<strong>SOA</strong>) il existe une panoplie de technologies disponibles. Le choix technologique dépend du besoin de chaque entreprise. En général, une architecture orientée service utilise les services web pour son implémentation. Les services web sont une technologie qui permet de rendre les blocs fonctionnels accessibles à travers Internet. Parmi les possibilités de web service, nous avons l’implémentation du standard <strong>SOAP</strong> (<em>Simple Object Access Protocol</em>) , l’utilisation de l’architecture <strong>REST</strong> (<em>Representational State Transfer</em>). Il est également possible d’utiliser des technologies basées sur l’échange de message telle que <strong>ActiveMQ</strong>, <strong>Apache ActiveMQ Artemis</strong>, <strong>Kafka</strong>, etc. Les déveoppeurs peuvent également utiliser des modèles appelés <strong>ESB</strong> (<em>Enterprise Service Bus</em>) pour réaliser l’intégration entre unn composant centralisé et les systèmes backe-end, puis les rendre disponibles en tant qu’interfaces de services.</p>
+</div>
+<div id="soa-vs-approche-monolithique" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> SOA vs approche monolithique<a href="index.html#soa-vs-approche-monolithique" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il existe plusieurs avantages à l’architecture orientée service spécialement pour un service web basé métier. Dans les lignes qui suivront, nous allons exposer quelques unes de ces bénéfices.</p>
+<p><u>Utiliser une architecture orientée service pour créer un code réutilisable</u> : Non seulement cela réduit le temps consacré au processus de développement, mais il n’y a aucune raison de réinventer la roue de codage chaque fois que vous devez créer un nouveau service ou processus. L’architecture orientée services permet également d’utiliser plusieurs langages de codage car tout passe par une interface centrale.</p>
+<p><u>Utiliser une architecture orientée service pour promouvoir l’interaction</u> : Avec l’architecture orientée services, une forme standard de communication est mise en place, permettant aux différents systèmes et plates-formes de fonctionner indépendamment les uns des autres. Grâce à cette interaction, l’architecture orientée services est également capable de contourner les pare-feu, permettant « aux entreprises de partager des services vitaux pour les opérations ».</p>
+<p><u>Utiliser une architecture orientée service pour la scalabilité</u> : Il est important de pouvoir faire évoluer une entreprise pour répondre aux besoins du client, mais certaines dépendances peuvent entraver cette évolutivité. L’utilisation de l’architecture orientée services réduit l’interaction client-service, ce qui permet une plus grande évolutivité.</p>
+<p><u>Utiliser une architecture orientée service les coûts</u> : Avec l’architecture orientée services, il est possible de réduire les coûts tout en « maintenant un niveau de sortie souhaité ». L’utilisation de l’architecture orientée services permet aux entreprises de limiter la quantité d’analyses requises lors du développement de solutions personnalisées.</p>
+<p><img src="soavsmono.png" width="70%" style="display: block; margin: auto;" />
+### Les rôles au sein d’une architecture orientée service (SOA)</p>
+<p>Trois (3) rôles fournissent les principaux composants d’une architecture orientée service :</p>
+<ul>
+<li>le fournisseur de service</li>
+<li>le broker ou registre de service</li>
+<li>le demandeur ou consommateur de service</li>
+</ul>
+<p><strong>Fournisseur ou producteur</strong> : un fournisseur crée des services web qu’il met à la disposition dans un <strong>registre de services</strong>. Il est responsable des conditions d’utilisation de ces services.</p>
+<p><strong>Broker ou registre de service</strong> : un borker ou registre de services est chargé de fournir les informations sur le service au <strong>demandeur</strong>. Le broker peut être public ou privé.</p>
+<p><strong>Demandeur ou consommateur</strong> : le consommateur de services cherche un service dans un broker ou registre de services, puis se connecte à un <strong>fournisseur de service</strong> pour obtenir le service en question.</p>
+<p><img src="roles.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="les-extensions-de-larchitecture-soa---architecture-évenementielle-event-driven-architecture" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Les extensions de l’architecture SOA - Architecture évenementielle (Event-Driven Architecture)<a href="index.html#les-extensions-de-larchitecture-soa---architecture-évenementielle-event-driven-architecture" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dans un système orienté événements, la structure centrale de la solution repose sur la capture, la communication, le traitement et la persistence des événements. C’est ce qui différencie ce type de système du modèle traditionnel orienté requête.</p>
+<p><strong>Evénement</strong> : un événement désigne tout phénomène ou changement d’état significatif au niveau du matériel ou d’un logiciel système. Il ne faut pas confondre un événemet et une notification d’évenement, c’est-à-dire une notification ou un message envoyé par le système pour signaler à une autre partie du système qu’un événement s’est produit.
+Les événements peuvent être causés par des actions internes ou externes. Ils peuvent être provoqués par des utilisateurs ( clics de souris ou frappe sur le clavier, par exemple), provenir d’une source externe (un capteur) ou être générés par le système (lors du chargement d’un programme, par exemple).</p>
+<p>Ce type d’architecture implique des <strong>producteurs</strong> et des <strong>consommateurs</strong> d’événements. Un producteur d’événements détecte ou reconnaît un événement et le représente sous forme de message. Il ignore quels seront les consommateurs et les conséquences de chaque événement.
+Lorsqu’un évenement a été détecté, il est transmis du producteur au consommateur via des <strong>canaux d’événement</strong>, où une plateforme de traitemennt les prend en charge de façon asynchrone. Les consommateurs doivent être informés lorsqu’un événement se produit. Ils peuvent traiter l’événement ou être seulement affectés par ce dernier.
+La plateforme de traitement des événements exécute ma reponse adaptée à chaque événement et envoie l’activité en aval au consommateurs concernés. Cette activité permet de visualiser le résultat d’un événement.</p>
+<p>Une architecture orientée événements peut être basée sur un modèle de <strong>publication/abonnement</strong> ou sur un modèle de <strong>flux d’événements</strong> .</p>
+<ul>
+<li><p>le modèle de <strong>publication/abonnement</strong> : ce modèle est une infrastructure de messagerie basée sur des abonnements à flux d’événements. Lorsqu’il est utilisé, chaque fois qu’un événement se produit ou est publié, il est envoyé aux abonnés qui doivent en être informés.</p></li>
+<li><p>le modèle de <strong>flux d’événement</strong> : avec ce modèle de flux d’événements, les évenements sont enregistrés dans un journal. Au lieu d’être abonnés à un flux d’évenements, les consommateurs peuvent accéder à n’importe quelle partie du flux et le rejoindre à tout moment.</p></li>
+</ul>
+</div>
+<div id="les-extensions-de-larchitecture-soa---les-api-application-programming-interface" class="section level3 hasAnchor" number="1.2.4">
+<h3><span class="header-section-number">1.2.4</span> Les extensions de l’architecture SOA - Les API (Application Programming Interface)<a href="index.html#les-extensions-de-larchitecture-soa---les-api-application-programming-interface" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Une <strong>API</strong> ou <strong>Interface de Programmation d’Application</strong>, est un ensemble de définitions et de protocoles qui facilite la création et l’intégration de logiciel d’applications.
+Les API permettent à votre produit ou service de communiquer avec d’autres produits et services sans connaître les détails de leur implémentation.
+Les API sont parfois considérés comme des contrats avec une documentation qui constitue un accord entre les parties : si la <strong>partie 1</strong> envoie une requête à distance selon une structure particulière, le logiciel de la <strong>partie 2</strong> devra répondre selon les conditions définies.</p>
+<p><img src="api.png" width="70%" style="display: block; margin: auto;" />
+Il existe plusieurs type d’API : les <strong>API privées</strong> , les <strong>API publiques</strong> et les <strong>API partenaires</strong>.</p>
+<p>L’<strong>API privée</strong> est utilisables qu’en interne de l’entreprise. Cette approche permet d’avoir un contrôle total sur l’API.</p>
+<p>L’<strong>API publique</strong> est accessible à tous. Cette approche autorise les tiers à développer des applications qui interagissent avec votre API et peut devenir source d’innovations.</p>
+<p>L’<strong>API partenaire</strong> est partagée avec certains partenaires de l’entreprise. Cette approche peut générer de nouveaux flux de revenus sans compromettre la sécurité.</p>
+</div>
+<div id="les-extensions-de-larchitecture-soa---les-microservices" class="section level3 hasAnchor" number="1.2.5">
+<h3><span class="header-section-number">1.2.5</span> Les extensions de l’architecture SOA - Les microservices<a href="index.html#les-extensions-de-larchitecture-soa---les-microservices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Les <strong>microservices</strong> sont une interprétation moderne des architectures orientées services utilisées pour créer des systèmes logiciels distribués. Ils ont une nouvelle approche de réalisation et de mise en oeuvre de la SOA qui met l’accent également sur le déploiement continu et d’autres pratiques agiles (<strong>DevOps</strong>).</p>
+<p>Les architectures de microservices fonctionnent d’une manière très similaires à la SOA, dans le sens où elles utilisent des services faiblement couplés. Par contre, elles poussent la destructuration de l’architecture classique encore plus loin.</p>
+<p>Les services qui compose l’architecture de microservices utilisent une structure de messagerie commune, telle que le <strong>API RESTful</strong>. Ils se servent des API RESTful pour communiquer entre eux simplement sans convertir leurs données ni recourir à des couches d’intégration supplémentaires. L’utilisation des API RESTful permet et favorise même l’accélération de la distribution es nouvelles fonctions et mises à jour.</p>
+<p>Chaque service est distinct. Vous pouvez remplacer, améliorer ou supprimer chacun d’entre eux sans affecter les autres services de l’architecture. Cette architecture légère vous aide à optimiser les ressources distribuées ou Cloud et à faire évoluer chaque service de façon dynamique.</p>
+<p>Les égalements ci-après caractérisent les microservices :</p>
+<ul>
+<li><p>des interfaces fines (vers des services déployables indépendamment)</p></li>
+<li><p>développement axé sur les affaires ( par exemple, conception axée sur le domaine)</p></li>
+<li><p>architectures applicatives cloud</p></li>
+<li><p>programmation polyglotte et persistence</p></li>
+<li><p>déploiement de conteneurs légers</p></li>
+<li><p>livraison continue décentralisée</p></li>
+<li><p>DevOps avec une surveillance holistique des services.</p></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="modèle-de-cycle-de-vie.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

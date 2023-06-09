@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Conception Orientée Service - 2&nbsp; Concepts clés de la conception orientée services</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./conceptionsoa.html" rel="next">
+<link href="./intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./concepts.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Concepts clés de la conception orientée services</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Conception Orientée Service</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./concepts.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Concepts clés de la conception orientée services</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./conceptionsoa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Méthodologie SOA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Réferences</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#quest-ce-que-la-conception-orientée-services" id="toc-quest-ce-que-la-conception-orientée-services" class="nav-link active" data-scroll-target="#quest-ce-que-la-conception-orientée-services"><span class="header-section-number">2.1</span> Qu’est-ce que la conception orientée services ?</a></li>
+  <li><a href="#quest-ce-que-la-soa-service-oriented-architecture" id="toc-quest-ce-que-la-soa-service-oriented-architecture" class="nav-link" data-scroll-target="#quest-ce-que-la-soa-service-oriented-architecture"><span class="header-section-number">2.2</span> Qu’est-ce que la SOA (Service Oriented Architecture) ?</a>
+  <ul class="collapse">
+  <li><a href="#larchitecture-orientée-service-soa" id="toc-larchitecture-orientée-service-soa" class="nav-link" data-scroll-target="#larchitecture-orientée-service-soa"><span class="header-section-number">2.2.1</span> L’Architecture Orientée Service (SOA)</a></li>
+  <li><a href="#comment-implémenter-la-soa" id="toc-comment-implémenter-la-soa" class="nav-link" data-scroll-target="#comment-implémenter-la-soa"><span class="header-section-number">2.2.2</span> Comment implémenter la SOA ?</a></li>
+  <li><a href="#les-différents-rôles-de-la-soa" id="toc-les-différents-rôles-de-la-soa" class="nav-link" data-scroll-target="#les-différents-rôles-de-la-soa"><span class="header-section-number">2.2.3</span> Les différents rôles de la SOA</a></li>
+  <li><a href="#les-extensions-de-larchitecture-soa---architecture-evenementielle-event-driven-architecture" id="toc-les-extensions-de-larchitecture-soa---architecture-evenementielle-event-driven-architecture" class="nav-link" data-scroll-target="#les-extensions-de-larchitecture-soa---architecture-evenementielle-event-driven-architecture"><span class="header-section-number">2.2.4</span> Les extensions de l’architecture SOA - Architecture Evenementielle (Event Driven Architecture)</a></li>
+  <li><a href="#les-extensions-de-larchitecture-soa---les-api-application-programming-interface" id="toc-les-extensions-de-larchitecture-soa---les-api-application-programming-interface" class="nav-link" data-scroll-target="#les-extensions-de-larchitecture-soa---les-api-application-programming-interface"><span class="header-section-number">2.2.5</span> Les extensions de l’architecture SOA - Les API (Application Programming Interface)</a></li>
+  <li><a href="#les-extensions-de-larchitecture-soa---les-microservices" id="toc-les-extensions-de-larchitecture-soa---les-microservices" class="nav-link" data-scroll-target="#les-extensions-de-larchitecture-soa---les-microservices"><span class="header-section-number">2.2.6</span> Les extensions de l’architecture SOA - Les microservices</a></li>
+  </ul></li>
+  <li><a href="#quest-ce-quun-service" id="toc-quest-ce-quun-service" class="nav-link" data-scroll-target="#quest-ce-quun-service"><span class="header-section-number">2.3</span> Qu’est-ce qu’un service ?</a>
+  <ul class="collapse">
+  <li><a href="#service---modularité-et-granularité" id="toc-service---modularité-et-granularité" class="nav-link" data-scroll-target="#service---modularité-et-granularité"><span class="header-section-number">2.3.1</span> Service - Modularité et granularité</a></li>
+  <li><a href="#service---encapsulation" id="toc-service---encapsulation" class="nav-link" data-scroll-target="#service---encapsulation"><span class="header-section-number">2.3.2</span> Service - Encapsulation</a></li>
+  <li><a href="#service---le-couplage-faible" id="toc-service---le-couplage-faible" class="nav-link" data-scroll-target="#service---le-couplage-faible"><span class="header-section-number">2.3.3</span> Service - Le couplage faible</a></li>
+  </ul></li>
+  <li><a href="#quelques-mots-clé" id="toc-quelques-mots-clé" class="nav-link" data-scroll-target="#quelques-mots-clé"><span class="header-section-number">2.4</span> Quelques mots-clé</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Concepts clés de la conception orientée services</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Pour cerner le paradigme de la conception orientée services, il est nécessaire de clarifier un certain nombre de concepts et de mots clés qui le supportent. Cette partie sera consacrée à définir la conception orientée service (Service Oriented Design), l’architecture orientée service (Service Oriented Architecture) et plusieurs mots clés.</p>
+<section id="quest-ce-que-la-conception-orientée-services" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="quest-ce-que-la-conception-orientée-services"><span class="header-section-number">2.1</span> Qu’est-ce que la conception orientée services ?</h2>
+<p>L’analyse et le conception orientée services (<strong>SOAD</strong> : <em>Service Oriented Analysis and Design</em>) est une méthodologie qui fait réference au processus de modélisation et à la conception d’architecture orientée services (<strong>SOA</strong> : <em>Service Oriented Architecture</em>).</p>
+<p>La conception orientée services est le processus par lequel les services d’une application qui supportent un processus métier sont dérivées en services logiques, puis assemblés en composition abstraite. Elle a pour objectif de :</p>
+<ul>
+<li>déterminer l’ensemble des extensions architecturales</li>
+<li>définir le périmètre de l’architecture</li>
+<li>identifier les standards de conception réquis</li>
+<li>définir les conceptions abstraites d’interface de service.</li>
+<li>identifier les compositions de services potentiels</li>
+<li>évaluer la prise en charge des principes d’orientation vers les services.</li>
+<li>explorer l’utilisation des caractéristiques de la SOA contemporaine.</li>
+</ul>
+<p>Une approche SOAD dans la conception SOA nécessite les éléments clés suivants :</p>
+<ul>
+<li>un modèle de processus</li>
+<li>des instructions</li>
+<li>des normes</li>
+<li>des artefacts</li>
+<li>une qualité de service.</li>
+</ul>
+<p><strong>Modèle de processus</strong> : elle consiste en la définitation du processus et de la notation en faisant un mélange de l’analyse orientée objet (UML), la modélisation des processus métier (BPM) et des éléments d’architecture d’entreprise.</p>
+<p><strong>Instruction</strong> : c’est la manière structurée de conceptualiser les services</p>
+<p><strong>Normes</strong> : fournir des facteurs de qualité bien définis et les meilleures pratiques de service, de capacité, de données et de granularité des contraintes. Les rôles doivent être bien définis et indiquer si c’est un développeur, un architecte ou un analyste qui est responsable de chaque fraction du travail.</p>
+<p><strong>Artefacts</strong> : elle consiste à définir ce qui n’est pas un bon servicee, comme les services qui ne sont pas réutilisables, et qui ne sont donc pas considérés comme des résidents SOA.</p>
+<p><strong>Qualité de service</strong> : elle facilite la modélisation de bout en bout et fournit un support complet d’outils.</p>
+</section>
+<section id="quest-ce-que-la-soa-service-oriented-architecture" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="quest-ce-que-la-soa-service-oriented-architecture"><span class="header-section-number">2.2</span> Qu’est-ce que la SOA (Service Oriented Architecture) ?</h2>
+<p>L’architecture orientée services (Services Oriented Architecture, SOA) est un modèle de développement logiciel à base de composants applicatifs (services) distribués et doté de fonction de découverte, de contrôle d’accès, de mappage de données et de sécurité.</p>
+<p>Un <strong>service</strong> est une unité autonome de fonctionnalité logicielle, ou d’un ensemble de fonctionnalités, conçue pour réaliser une tâche précise comme récupérer des informations ou exécuter une opération.</p>
+<section id="larchitecture-orientée-service-soa" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="larchitecture-orientée-service-soa"><span class="header-section-number">2.2.1</span> L’Architecture Orientée Service (SOA)</h3>
+<p>L’architecture SOA a deux grandes fonctions. La première s’agit de créer un modèle d’architecture qui définit les objectifs des applications et les approches pour les atteindre; ensuite, définir des caractéristiques de mise en oeuvre précises, souvent liées à celles du langage de description de services <strong>WSDL</strong> (Web Services Descriptio Language) et du protocole <strong>SOAP</strong> (Simplee Object Access Protocol).</p>
+<p>L’approche SOA intègre nativement les principes de <strong><em>modularité</em></strong>, <strong><em>d’interfaçage</em></strong>, de <strong><em>contractualisation</em></strong>, et d’<strong><em>interopérabilité</em></strong>. Elle assure ainsi une adaptation rapide du système d’informationn au regard des évolutions des besoins de l’entreprise. Elle permet également de capitaliser la mise en place de bonnes pratiques par l’élaboration d’une architecture de reference. Cette architecture de référence pourra également être utilisée pour répondre à des problématiques de convergence de systèmes.</p>
+<p>L’architecture SOA se base sur les ressources de l’entreprise pour fournir un système informatique efficient. Ce sont :</p>
+<ul>
+<li><strong>pratique</strong> : elle utilise les best-practices de l’entreprise pour construire une architecture efficace</li>
+<li><strong>plateforme</strong> : augmenter l’efficacité opérationnelle</li>
+<li><strong>utilisateur</strong> : augmenter l’efficacité opérationnelle</li>
+<li><strong>processus</strong> : aligner l’IT au processus métiers de l’entreprise</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/SOA.png" class="img-fluid figure-img" width="425"></p>
+<figcaption class="figure-caption">SOA et ressources de l’entreprise</figcaption>
+</figure>
+</div>
+<p>Selon le <strong>Gartner Group Research</strong>, une application qui obéit à la SOA doit respecter les cinq (5) principes suivants :</p>
+<ol type="1">
+<li><strong><em>Le système doit être modulaire</em></strong>. Cela offre l’avantage évident de pouvoir diviser et régner (résoudre un problème complexe en assemblant un ensemble de petits composants simples qui fonctionnent ensemble)</li>
+<li><strong><em>Les modules doivent être distribuables</em></strong>. Ils doivent être capables de fonctionner sur des ordinateurs différents et communiquent entre eux en envoyant des messages sur un réseau lors de leur exécution.</li>
+<li><strong><em>Les interfaces d’un module doivent être clairement définies et documentées</em></strong>. Les développeurs de logiciels écrivent ou génèrent des métadonnées d’interface qui spécifient un contrat explicite afin qu’un autre développeur puisse trouver et utiliser le service (cela permet le couplage faible)</li>
+<li><strong><em>Un module qui implémente un service peut être remplacé par un autre module qui offre le même service et la même interface</em></strong>, car l’interface conçue est distincte du module. Il s’agit d’un aspect du couplage faible qui permet une maintenance et des améliorations continues.</li>
+<li><strong><em>Les modules du fournisseur de services doivent être partageables</em></strong>. Ils sont conçus et déployés de manière à pouvoir être invoqués successivement par des modules consommateurs de services disparates engagés dans des activités métiers diverses, bien que partiellement liées.</li>
+</ol>
+</section>
+<section id="comment-implémenter-la-soa" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="comment-implémenter-la-soa"><span class="header-section-number">2.2.2</span> Comment implémenter la SOA ?</h3>
+<p>Pour implémenter la SOA, il existe une panoplie de technologies disponibles. Le choix technologique dépend du besoin de chaque entreprise. Au départ, les mises en oeuvre SOA dérivaient des technologies <strong>RPC</strong> (Remote Procedure Call), notamment celles orientées objets, disponibles aux alentours de l’an 2000. Avec le temps, ces technologies se sont scindées en deux camps. Le premier, celui des services web, représente la gestion formalisée et hautement structurée de procédures et des composants distants. Le second, le camp du transfert d’état représentatif (REpresentational State Transfer, <a href="https://redhat.com/fr/topics/api/what-is-a-rest-api"><strong>REST</strong></a>), correspond à l’utilisation des technologies d’Internet pour accéder aux composants d’application hébergés à distance.</p>
+<p>Dans le modèle Web Service (WS) de l’architecture SOA, le langage <a href="https://www.ibm.com/docs/fr/was/9.0.5?topic=services-wsdl"><strong>WSDL</strong></a> (Web Service Description Language) sert à connecter les interfaces aux services, et le protocole <a href="https://www.redhat.com/fr/topics/integration/whats-the-difference-between-soap-rest#:~:text=SOAP%20est%20un%20protocole%20standard,ralentir%20le%20chargement%20des%20pages."><strong>SOAP</strong></a> à définir les API des composants ou des procédures. Les principes des services web appliqués à la liaison d’applications par un bus de service d’entreprise (Enterprise Service Bus, <strong>ESB</strong>) ont permis aux entreprises d’intégrer leurs applications, de renforcer l’efficacité et d’améliorer la gouvernance des données.</p>
+<p>Contrairement au modèl Web Service, les interfaces de programmation d’application compatibles REST, ou <a href="https://www.redhat.com/fr/topics/api/what-is-a-rest-api"><strong>API RESTful</strong></a>, n’ont pas besoin de grosses capacités et sont faciles à comprendre.</p>
+<p>Il existe aussi d’autres variantes de l’implémentation de la SOA qui sont en vogue : <a href="https://techtarget.com/searchapparchitecture/definition/gRPC"><strong>gRPC</strong></a>, <a href="https://learn.microsoft.com/fr-fr/dotnet/framework/wcf/whats-wcf"><strong>Windows Communication Foundation</strong></a>, les protocoles à base de message tels que <a href="https://activemq.apache.org/"><strong>Java Message Service ActiveMQ</strong></a> et <a href="https://www.rabbitmq.com/"><strong>RabbitMQ</strong></a>.</p>
+</section>
+<section id="les-différents-rôles-de-la-soa" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="les-différents-rôles-de-la-soa"><span class="header-section-number">2.2.3</span> Les différents rôles de la SOA</h3>
+<p>L’architecture orientée service est basée sur trois(3) rôles essentiels :</p>
+<ul>
+<li>le <strong>fournisseur</strong> ou <strong>producteur</strong> : un fournisseur crée des services web qu’il met à la disposition du registre de services. Il est responsable des conditions de ces services.</li>
+<li>le <strong>broker</strong> ou <strong>registre de services</strong> : un broker ou registre de services est chargé de fournir les informations sur le service au démandeur. Le registre peut être publique ou privé.</li>
+<li>le <strong>consommateur</strong> ou <strong>demandeur</strong> : le consommateur de services cherche un service dans un broker ou registre de services, puis se connecte à un fournisseur de service pour obtenir le service en question.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/roles.png" class="img-fluid figure-img" width="437"></p>
+<figcaption class="figure-caption">Rôles de la SOA</figcaption>
+</figure>
+</div>
+</section>
+<section id="les-extensions-de-larchitecture-soa---architecture-evenementielle-event-driven-architecture" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="les-extensions-de-larchitecture-soa---architecture-evenementielle-event-driven-architecture"><span class="header-section-number">2.2.4</span> Les extensions de l’architecture SOA - Architecture Evenementielle (Event Driven Architecture)</h3>
+<p>Dans un système orienté événements, la structure centrale de la solution repose sur la capture, la communication, le traitement et la persistence des événements. C’est ce qui différencie ce type de système du modèle traditionnel orienté requête.</p>
+<p><strong>Evénement</strong> : un événement désigne tout phénomène ou changement d’état significatif au niveau du matériel ou d’un logiciel système. Il ne faut pas confondre un événemet et une notification d’évenement, c’est-à-dire une notification ou un message envoyé par le système pour signaler à une autre partie du système qu’un événement s’est produit. Les événements peuvent être causés par des actions internes ou externes. Ils peuvent être provoqués par des utilisateurs ( clics de souris ou frappe sur le clavier, par exemple), provenir d’une source externe (un capteur) ou être générés par le système (lors du chargement d’un programme, par exemple).</p>
+<p>Ce type d’architecture implique des <strong>producteurs</strong> et des <strong>consommateurs</strong> d’événements. Un producteur d’événements détecte ou reconnaît un événement et le représente sous forme de message. Il ignore quels seront les consommateurs et les conséquences de chaque événement. Lorsqu’un évenement a été détecté, il est transmis du producteur au consommateur via des <strong>canaux d’événement</strong>, où une plateforme de traitemennt les prend en charge de façon asynchrone. Les consommateurs doivent être informés lorsqu’un événement se produit. Ils peuvent traiter l’événement ou être seulement affectés par ce dernier. La plateforme de traitement des événements exécute ma reponse adaptée à chaque événement et envoie l’activité en aval au consommateurs concernés. Cette activité permet de visualiser le résultat d’un événement.</p>
+<p>Une architecture orientée événements peut être basée sur un modèle de <strong>publication/abonnement</strong> ou sur un modèle de <strong>flux d’événements</strong>.</p>
+<p>Le modèle de <strong>publication/abonnement</strong> : ce modèle est une infrastructure de messagerie basée sur des abonnements à flux d’événements. Lorsqu’il est utilisé, chaque fois qu’un événement se produit ou est publié, il est envoyé aux abonnés qui doivent en être informés.</p>
+<p>Le modèle de <strong>flux d’événement</strong> : avec ce modèle de flux d’événements, les évenements sont enregistrés dans un journal. Au lieu d’être abonnés à un flux d’évenements, les consommateurs peuvent accéder à n’importe quelle partie du flux et le rejoindre à tout moment.</p>
+</section>
+<section id="les-extensions-de-larchitecture-soa---les-api-application-programming-interface" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="les-extensions-de-larchitecture-soa---les-api-application-programming-interface"><span class="header-section-number">2.2.5</span> Les extensions de l’architecture SOA - Les API (Application Programming Interface)</h3>
+<p>Une <strong>API</strong> (Application Programming Interface) ou <strong>Interface de Programmation d’Application</strong> est un ensemble de définitions et de protocoles qui facilite la création et l’intégration de logiciel d’applications. Les API permettent à votre produit ou service de communiquer avec d’autres produits et services sans connaître les détails de leur implémentation. Les API sont parfois considérés comme des contrats avec une documentation qui constitue un accord entre les parties : si la <strong>partie 1</strong> envoie une requête à distance selon une structure particulière, le logiciel de la <strong>partie 2</strong> devra répondre selon les conditions définies.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/api.png" class="img-fluid figure-img" width="453"></p>
+<figcaption class="figure-caption">Architecture à base d’APIs</figcaption>
+</figure>
+</div>
+<p>Il existe plusieurs types d’API: les <strong>API privées</strong> , les <strong>API publiques</strong> et les <strong>API partenaires</strong>.</p>
+<p>L’<strong>API privée</strong> est utilisables qu’en interne de l’entreprise. Cette approche permet d’avoir un contrôle total sur l’API.</p>
+<p>L’<strong>API publique</strong> est accessible à tous. Cette approche autorise les tiers à développer des applications qui interagissent avec votre API et peut devenir source d’innovations.</p>
+<p>L’<strong>API partenaire</strong> est partagée avec certains partenaires de l’entreprise. Cette approche peut générer de nouveaux flux de revenus sans compromettre la sécurité.</p>
+</section>
+<section id="les-extensions-de-larchitecture-soa---les-microservices" class="level3" data-number="2.2.6">
+<h3 data-number="2.2.6" class="anchored" data-anchor-id="les-extensions-de-larchitecture-soa---les-microservices"><span class="header-section-number">2.2.6</span> Les extensions de l’architecture SOA - Les microservices</h3>
+<p>Les microservices sont une interprétation moderne des architectures orientées services utilisées pour créer des systèmes logiciels distribués. Les architectures de microservices fonctionnent d’une manière très similaires à la SOA, dans le sens où elles utilisent des services faiblement couplés. Par contre, elles poussent la destructuration de l’architecture classique encore plus loin.</p>
+<p>Les architectures logicielles à base de microservices ne sont que des mises en oeuvre actualisées du modèle SOA. Les composants logiciels sont conçus comme des services à exposer via des API, comme l’exige la SOA. Un broker d’API fait l’intermédiaire : il donne accès aux composants et garantit l’observation des règles de sécurité et de gouvernance. Par des techniques logicielles, il assure la correspondance entre les différents formats d’E/S des microservices et les applications qui les utilisent.</p>
+<p>Chaque service est distinct. Vous pouvez remplacer, améliorer ou supprimer chacun d’entre eux sans affecter les autres services de l’architecture. Cette architecture légère vous aide à optimiser les ressources distribuées ou Cloud et à faire évoluer chaque service de façon dynamique.</p>
+</section>
+</section>
+<section id="quest-ce-quun-service" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="quest-ce-quun-service"><span class="header-section-number">2.3</span> Qu’est-ce qu’un service ?</h2>
+<p>Le service est un concept fondamental dans le paradigme de l’orienté services. Il est l’unité de base des fonctionalités métier d’une entreprise que l’on peut mettre à la disposition de tiers par le biais d’un contrat de service.</p>
+<p>Le contrat de service définit toutes les interactions entre le fournisseur et le consommateur. Cela comporte : l’interface du service, la documentation de l’interface, les règles d’usage du service (politiques), la qualité de service, la performance</p>
+<p>La figure ci-dessous (Fig. 2.4) présente la structure d’un service.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/service.png" class="img-fluid figure-img" width="380"></p>
+<figcaption class="figure-caption">Structure d’un service</figcaption>
+</figure>
+</div>
+<p>En plus de sa structure, un bon service doit avoir les caractéristiques suivants : la modularité, l’encapsulation, le couplage faible, l’isolation des responsabilités, l’autonomie, la reutilisabilité, la découverte et le la liaison dynamique, il est sans état, l’auto-description, composable, gouverné par des règles, indépendance de localité, de langage et de protocole.</p>
+<section id="service---modularité-et-granularité" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="service---modularité-et-granularité"><span class="header-section-number">2.3.1</span> Service - Modularité et granularité</h3>
+<p>Les processus métier sont décomposés en services modulaires autonomes. Les services eux-mêmes peuvent être composés d’autres services modulaires et peuvent être combinés et mis en rélief selon les besoins pour créer de nouveaux services composites.</p>
+<p>La granularité est une fonction de richesse pour un service; plus un service est grossier, plus la fonction offerte par le service est riche ou étendue. Les services à gros grain offrent un plus grand niveau de fonctionnalité au sein d’une opération de service unique. Cela permet de réduire la complexité et la surcharge du réseau en réduisant les étapes nécessaires pour mener à bien une activité métier précise. Le service à granularité fine permet l’échange de petites quantités d’informations pour effectuer une tâche spécifique. Exemple ?</p>
+<p>Dans n’importe quel système les processus métier d’entreprise sont batis sur cette hierarchie des services.</p>
+<ul>
+<li><strong>les services métier</strong> : ce sont les services les plus grossiers. Les services métier exposent à l’entreprise des fonctions métier composites de haut niveau. Il est généralement composé de plusieurs services de niveau inférieur ou plus fins.</li>
+<li><strong>les services de domaine</strong> : Les services de domaine sont à grain moyen. Ils fournissent des services liés à l’entreprise qui sont spécifiques à un domaine d’activité et sont utilisés par de nombreux services d’entreprise différents dans ce domaine (par exemple, la validation d’une inscription) mais peuvent ne pas être exposés en dehors du domaine</li>
+<li><strong>les services utilitaires</strong> : Les services utilitaires sont les moins grossiers. Ils fournissent des services de niveau inférieur qui fournissent des fonctionnalités communes à toute l’entreprise (par exemple, la validation du carnet d’adresses ou du numéro de série)</li>
+<li><strong>les services d’intégration</strong> : Ceux-ci exposent les applications existantes en tant que services utilisables par le reste de l’entreprise et fournissent un accès consolidé cohérent aux données de l’entreprise qui sont réparties sur de nombreuses sources de données différentes. La granularité des services d’intégration dépendra en partie des systèmes existants qu’ils exposent. Les services d’intégration impliquent généralement une transformation entre le modèle d’entreprise et le modèle d’application, à la fois au niveau fonctionnel et informationnel.</li>
+<li><strong>les services externes</strong> : Ceux-ci donnent accès à des systèmes et applications fournis par des fournisseurs ou des partenaires externes à l’entreprise (par exemple, la validation des cartes de crédit ou le suivi des expéditions). La granularité des services externes dépendra du fournisseur de services particulier. Bien que traditionnellement ceux-ci aient été relativement fins, les nouveaux fournisseurs de logiciels en tant que service créent une grande variété de services dans tous les domaines.</li>
+<li><strong>les services de base</strong> : Celles-ci fournissent des fonctionnalités à granularité fine qui sont utilisées dans la construction de services de niveau supérieur, indépendamment de tout domaine métier (par exemple, la sécurité, la journalisation et l’orchestration).</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/hierarchieservices.png" class="img-fluid figure-img" width="380"></p>
+<figcaption class="figure-caption">Hierarchie des services</figcaption>
+</figure>
+</div>
+<p>Une des caractéristiques importantes du service est la taille. Elle permet de distinguer comment le service est utilisé. Les quatre dimensions sont : la portée, l’appartenance, la granularité et la construction.</p>
+<p><strong>La portée</strong> : La portée définit les limites organisationnelles dans lesquelles un service est censé fonctionner.</p>
+<p><strong>La propriété</strong> : La propriété définit l’unité organisationnelle responsable de la prise en charge d’un service. Dans une architecture SOA, cela va bien au-delà de la simple maintenance et des opérations jusqu’au cycle de vie global du service.</p>
+<p>La pratique courante veut qu’il existe un groupe de services central responsable de la propriété des services partagés dans l’ensemble de l’entreprise. En outre, chaque secteur d’activité (ou unité organisationnelle plus petite) peut disposer de certains services qu’il possède individuellement.Toutes les combinaisons possibles de propriété et de portée peuvent exister pour les services au sein d’une organisation donnée.</p>
+<p><strong>La granularité</strong> : La granularité décrit la taille d’un service en termes de quantité de fonctions métier exécutées dans une seule transactionn de requête/réponse de messages.</p>
+<p><strong>La construction</strong> : La construction fait référence à la manière dont le service a été implémenté. Par exemple, il peut être implémenté directement sous forme de code tel qu’un service de petite granularité ou il peut être composé d’autres services tels qu’un service métier. Mais il existe également d’autres options très différentes. Le service peut être essentiellement un wrapper de service autour de certaines fonctions ou données existantes dans une application héritée. Nous appelons cela un <em>service d’intégration</em>. Ou, le service peut être fourni (tel quel) par un partenaire commercial, comme la possibilité de localiser un envoi avec FedEx en fonction de son numéro de suivi. Nous appelons cela un <em>service externe</em>.</p>
+<p>Ci-dessous la figure qui resume les dimensions d’un service.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/servicedimension.png" class="img-fluid figure-img" width="453"></p>
+<figcaption class="figure-caption">Dimensions d’un service</figcaption>
+</figure>
+</div>
+</section>
+<section id="service---encapsulation" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="service---encapsulation"><span class="header-section-number">2.3.2</span> Service - Encapsulation</h3>
+<p>Les bons services présentent une séparation stricte entre l’interface d’un service (ce qu’un service fait) et la mise en oeuvre du service (comment c’est fait). L’encapsulation masque les détails d’implémentation interne du service et les structures de données des opérations d’interface publiées et du modèle sémantique.</p>
+</section>
+<section id="service---le-couplage-faible" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="service---le-couplage-faible"><span class="header-section-number">2.3.3</span> Service - Le couplage faible</h3>
+<p>Le couplage décrit le nombre de dépendances entre un consommateur et un fournisseur de services. Les services faiblement couplés ont peu de dépendances bien connues et gérées. Les services étroitement couplés ont de nombreuses dépendances connues et, plus important encore, inconnues. Le degré de couplage affecte directement la flexibilité et l’extensibilité d’un système.</p>
+<p>Il existe plusieurs dimensions dans le couplage. Dans les systèmes distribués, le couplage était traditionnellement pensé par rapport au temps, et la discussion à ce sujet était encadrée en termes de mécanismes de communication synchrones ou asynchrones. Cependant, dans les systèmes basés sur les services, la dimension la plus importante du couplage est la relation <code>&lt;&lt;used&gt;&gt;</code> ou <code>&lt;&lt;used by&gt;&gt;</code> entre le consommateur et le fournisseur.</p>
+<p>Pour atteindre le couplage faible, il faudrait s’assurer des éléments suivants : la transparence de l’emplacement, l’interface et son implémentation, les données, le versionage, l’intéroperabilité et l’indépendance de plateforme, l’utilisation, les hypothèses et connaissances.</p>
+<p><strong>La transparence de l’emplacement</strong> : La transparence de l’emplacement soulage le consommateur du service de la nécessité de savoir quoi que ce soit sur l’emplacement du service. Le consommateur s’adresse à un registre pour avoir les informations de l’emplacement de manière dynamique.</p>
+<p>Les emplacements de service peuvent être déplacés au fur et à mesure de la migration des systèmes ou à des fins de redondance et de basculement.</p>
+<p><strong>Interface et implémentation</strong> : L’un des concepts importants des applications distribuées consiste à découpler l’interface de l’implémentation. Cela permet à une implémentation de service de changer (par exemple, modifier la représentation des données internes ou migrer d’un système hérité vers une nouvelle implémentation) sans nécessiter de modifications des consommateurs de services. La SOA réduit le couplage et la dépendance entre les fournisseurs de services et les consommateurs en garantissant que le contrat d’interface est leur seul moyen d’interaction.</p>
+<p><strong>Les données</strong> : Vous pouvez également penser au découplage en termes de définition des données. Le concept d’information, masquage vous demande de définir une vue publique des données (les données sémantiques), puis de la mapper à la vue interne (les données du domaine) ou à l’implémentation. Un service ne doit jamais exposer ses structures de données internes. Même la plus petite quantité d’informations internes exposées en dehors du service entraînera des dépendances inutiles. Seules les informations disponibles dans le modèle sémantique sont exposées via l’interface. Dans l’implémentation du service, ces informations sont transformées entre le modèle d’informations sémantique et le schéma interne pour isoler les deux. En d’autres termes, les définitions de données internes sont mappées dans la sémantique du contrat externe. Le contrat dépend uniquement du domaine problématique du service, et non des détails de mise en œuvre interne.</p>
+<p>Cela permet à la vue interne d’évoluer sans affecter les clients et empêche les clients de faire des suppositions sur la mise en œuvre.</p>
+<p><strong>Le versionnage</strong> : Les services évolueront inévitablement pour répondre aux nouvelles exigences. Cependant, comme les services sont utilisés au-delà des frontières de l’organisation ou de l’entreprise, le producteur d’un service ne peut pas contrôler quand le consommateur d’un service mettra à jour son implémentation. De plus, comme de plus en plus de consommateurs dépendent d’un service spécifique, il devient plus difficile sur le plan logistique de gérer une migration de version forcée. Au niveau de l’entreprise, si les consommateurs de services ne peuvent pas garder le contrôle du cycle de vie de leurs propres applications et des calendriers de publication, il est peu probable qu’ils utilisent ce service. Une SOA doit tenir compte de ces problèmes via une combinaison d’infrastructure, de conception d’interface, de définition de données, de liaison dynamique et de politique de gestion des versions. Par exemple, l’infrastructure pour la définition, la recherche et l’appel du service doit prendre en charge les numéros de version et plusieurs versions simultanées.</p>
+<p>Les fournisseurs de services doivent se conformer à une politique de gestion des versions. Une politique typique décrirait deux classes de mise à niveau : les améliorations mineures et les améliorations majeures. Les améliorations mineures sont des corrections de bogues et d’autres petites modifications qui ne modifient pas le comportement ou les interfaces (bien qu’elles puissent améliorer les capacités de manière simple). Des améliorations majeures modifient les interfaces et/ou le comportement. Une politique typique nécessiterait une rétrocompatibilité entre les mises à jour de versions mineures. De plus, il faudrait que deux versions majeures soient supportées en continu ou une période minimale (1 à 2 ans) pour qu’une version précédente soit supportée.</p>
+<p><strong>Intéroperabilité et indépendance de la plateforme</strong> : L’exigence que les services prennent en charge plusieurs consommateurs a des implications en termes de communications, d’interopérabilité et d’indépendance de la plate-forme. Vous ne pouvez pas supposer que tous les consommateurs d’un service utiliseront la même plate-forme. Cela est particulièrement vrai pour les grandes entreprises ou les consommateurs qui se trouvent en dehors des limites de l’entreprise. Par conséquent, vous avez besoin d’un mécanisme de communication compatible entre les plates-formes. Cela permet à n’importe quel client d’accéder à un service et donne aux fournisseurs de services une flexibilité en termes de mise en œuvre de la plate-forme. (Par exemple, en raison d’une acquisition, ils peuvent avoir besoin de mettre en œuvre des services maintenant sur une plate-forme existante, tout en prévoyant de migrer vers une autre plate-forme standard d’entreprise au fil du temps.)</p>
+<p>Les services Web peuvent aider à fournir cette interopérabilité, mais ce n’est pas si simple. Comme mentionné précédemment, les services Web évoluent rapidement. Les consommateurs et les fournisseurs doivent conserver autant que possible leur indépendance vis-à-vis de mécanismes spécifiques. Comme alternative, la compatibilité d’interface peut être définie sur la base de signatures d’opération conformes plutôt que sur la compatibilité de type.</p>
+<p><strong>Utilisation, hypothèses et connaissances</strong> : La SOA est un système faiblement couplé de services et de consommateurs de services. Au moment de la conception, le couplage faible nécessite que les services soient conçus avec peu ou pas d’hypothèses ou de connaissance d’un consommateur de service particulier. La mise en œuvre du service ne doit faire aucune hypothèse quant à l’objectif ou aux caractéristiques techniques ou commerciales du consommateur du service. Une qualité fondamentale d’un service est sa capacité à être réutilisé dans des contextes nouveaux ou différents.</p>
+</section>
+</section>
+<section id="quelques-mots-clé" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="quelques-mots-clé"><span class="header-section-number">2.4</span> Quelques mots-clé</h2>
+<p>Cette partie offre la définition de quelques mots-clé que nous allons utiliser tout le long du document et qui sont spécifiques à l’écosystème SOA.</p>
+<p><strong>Enterprise Business Process (EBR)</strong> : Un processus métier d’entreprise est un type spécifique de processus métier qui couvre des domaines métier à l’intérieur (ou à l’extérieur) de l’entreprise.</p>
+<p><strong>Workflow</strong> : Le workflow ou le flux de travail est un style d’informatique dans lequel un processus est décomposé en une série d’étapes, d’activités, de conditions, etc. Les activités de travail passent d’une étape à l’autre en fonction de l’évaluation conditionnelle. Le flux de travail est généralement exécuté par un système de gestion de flux de travail qui prend en charge le développement de flux de travail, la répartition du travail dans les files d’attente, la gestion des processus, etc. Fréquemment, les systèmes de flux de travail incluent des activités effectuées par des humains, où les éléments de travail sont placés dans la boîte de réception d’une personne et les éléments terminés sont placés dans sa boîte d’envoi.</p>
+<p><strong>Orchestration</strong> : L’orchestration est un type spécifique de flux de travail qui est généralement appliqué à la construction de processus métier à partir de services métier ou de services composites à partir de services plus petits et n’inclut pas les activités humaines. L’orchestration comprend souvent un chef d’orchestre ou un contrôleur qui gère, contrôle ou dirige l’interaction entre les autres parties afin qu’elles n’aient pas de dépendances directes les unes sur les autres.</p>
+<p><strong>Business Process Management (BPM)</strong> : Wikipédia définit cela comme “<em>un domaine émergent de connaissances et de recherche à l’intersection entre la gestion et les technologies de l’information, englobant des méthodes, des techniques et des outils pour concevoir, mettre en œuvre, contrôler et analyser des processus opérationnels opérationnels impliquant des humains, des organisations, des applications, des documents et d’autres sources d’information</em>”. Vous pouvez le considérer comme un type de construction de processus qui met l’accent sur la gestion des processus métier en plus de la technologie d’orchestration. Une fonction clé des systèmes BPM est la surveillance pour s’assurer que les processus répondent aux objectifs commerciaux. En outre, ils peuvent inclure des fonctions d’audit, de reporting et autres.</p>
+<p><strong>Business Process Model</strong> : Modèle utilisé pour définir l’exécution et la composition de processus de niveau supérieur à partir de services de niveau inférieur. Les modèles de processus sont exécutés par des outils d’orchestration ou de BPM. Les services métier et les processus métier d’entreprise peuvent être définis par des modèles de processus métier.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./conceptionsoa.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Méthodologie SOA</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,32 @@
+project:
+  type: book
+
+book:
+  title: "Conception Orientée Service"
+  author: "Constantin Drabo"
+  date: "5/4/2023"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - concepts.qmd
+    - conceptionsoa.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+    include-in-header: 
+      text: |
+        \usepackage{makeidx}
+        \makeindex
+    include-after-body: 
+      text: |
+        \printindex
+
+editor: visual
+

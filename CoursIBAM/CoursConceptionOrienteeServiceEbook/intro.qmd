@@ -1,0 +1,16 @@
+# Introduction
+
+Le paradigme de la programmation est guidé, depuis la naissance de l'Internet, par l'exploitation de la technologie de mise en réseau et la nécessité de pouvoir créer plus rapidement des capacités plus puissantes.
+
+Les utilisateurs peuvent envoyer des emails, des messages instantanés à des membres de sa famille ou partager des fichiers sur le Web. Certaines fonctionnalités ont été dans les pages web : téléphonie Internet gratuite, traduction de texte, comparateurs de prix (transport, vente), etc. Ces services sont utiles en eux-mêmes, mais Internet est encore très cloisonné ; connecter ces services ensemble pour faire des choses plus puissantes est très difficile.
+
+Dans une entreprise, le système d'information est dynamique car elle peut amener à nouer et modifier des partenaires commerciaux durant son cycle de vie. Par exemple, un processus métier peut être externalisé, ou différents processus peuvent être intégrés pour fournir un nouveau produit.
+De plus, les entreprises utilisent de plus en plus des logiciels pour améliorer leurs processus d'affaires. Cela nous ammène à conclure que les applications informatiques ont une place importante dans le processus du partenariat entre les entreprises.
+
+Afin de resoudre la problématique de l'intégration des services, la programmation orientée services offre des méthodes et des technologies. Elle permet, entre autre, aux entreprises partenaires de lier leurs applications informatiques respectives. Cela facilite l'introduction de produits plus diversifiés et des logiciels plus riches, offrant ainsi de nouvelles opportunités. Les autres avantages sont le gain en temps de développement des applications en reutilisant les services déjà disponibles, et la création d'un marché des services, où les entreprises en font leur secteur d'activité pour offrir des services génériques et réutilisables pouvant être utilisés comme pièce dans le développement d'applications.
+
+Le paradigme de l'orienté services se caractérise par l'identification explicite et la description du comportement ou service observable de l'extérieur d'une application. De ce fait, le développeur n'a pas besoin de connaitre l'implémentation des services à lier.
+
+La programmation orienté services est un concept techno-centré. Elle se situe à l'étape de l'implémentation des services. Dans notre document, nous allons beaucoup plus développer le concept de la conception orienté services. Elle est la phase qui précède la programmation orientée services et se définit comme le processus de conception d'application pour la gestion d'un ou plusieurs processus métier en utilisant le paradigme orienté services.
+
+Premièrement nous allons fixer le décors en donnant la définition des mots-clés qui seront utilisés et des concepts qui seront abordés. Dans le second temps nous allons présenter l'approche de la conception orientée services. Cette approche identifie les jalons génériques du processus de conception de la prise en charge des applications pour les processus métier pouvant être mis en œuvre à l'aide de la technologie de la programmation orientée services.

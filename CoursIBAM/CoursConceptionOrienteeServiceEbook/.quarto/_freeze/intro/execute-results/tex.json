@@ -1,0 +1,18 @@
+{
+  "hash": "13cc097a06c0964824b1d2531604e51d",
+  "result": {
+    "markdown": "# Introduction\n\nLe paradigme de la programmation est guidé, depuis la naissance de l'Internet, par l'exploitation de la technologie de mise en réseau et la nécessité de pouvoir créer plus rapidement des capacités plus puissantes.\n\nLes utilisateurs peuvent envoyer des emails, des messages instantanés à des membres de sa famille ou partager des fichiers sur le Web. Certaines fonctionnalités ont été dans les pages web : téléphonie Internet gratuite, traduction de texte, comparateurs de prix (transport, vente), etc. Ces services sont utiles en eux-mêmes, mais Internet est encore très cloisonné ; connecter ces services ensemble pour faire des choses plus puissantes est très difficile.\n\nDans une entreprise, le système d'information est dynamique car elle peut amener à nouer et modifier des partenaires commerciaux durant son cycle de vie. Par exemple, un processus métier peut être externalisé, ou différents processus peuvent être intégrés pour fournir un nouveau produit.\nDe plus, les entreprises utilisent de plus en plus des logiciels pour améliorer leurs processus d'affaires. Cela nous ammène à conclure que les applications informatiques ont une place importante dans le processus du partenariat entre les entreprises.\n\n\n\nSee @knuth84 for additional discussion of literate programming.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {
+      "knitr": [
+        "{\"type\":\"list\",\"attributes\":{},\"value\":[]}"
+      ]
+    },
+    "preserve": null,
+    "postProcess": false
+  }
+}
