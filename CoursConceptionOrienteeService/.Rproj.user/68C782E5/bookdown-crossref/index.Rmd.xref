@@ -1,0 +1,10 @@
+h1:les-concepts Les concepts
+h2:définition Définition
+h2:quest-ce-que-la-soa Qu’est-ce-que la SOA
+h3:comment-fonctionne-larchitecture-orientée-service Comment fonctionne l’architecture orientée service
+h3:soa-vs-approche-monolithique SOA vs approche monolithique
+h3:les-rôles-au-sein-dune-architecture-orientée-service-soa Les rôles au sein d’une architecture orientée service (SOA)
+h3:les-extensions-de-larchitecture-soa---architecture-évenementielle-event-driven-architecture Les extensions de l’architecture SOA - Architecture évenementielle (Event-Driven Architecture)
+h3:les-extensions-de-larchitecture-soa---les-api-application-programming-interface Les extensions de l’architecture SOA - Les API (Application Programming Interface)
+h3:les-extensions-de-larchitecture-soa---les-microservices Les extensions de l’architecture SOA - Les microservices
+
